@@ -1,0 +1,9 @@
+Dataset Information
+
+SRA Accession: SRR37624945
+Organism: Escherichia coli
+Platform: Illumina
+
+The raw FASTQ files are publicly available from the NCBI Sequence Read Archive (SRA).
+
+The analysis pipeline in this repository starts from these publicly available sequencing reads.

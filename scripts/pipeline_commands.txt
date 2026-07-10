@@ -1,0 +1,41 @@
+# Quality Control
+fastqc SRR37624945.fastq
+
+# Trimming
+trimmomatic SE \
+SRR37624945.fastq \
+SRR37624945_trimmed.fastq \
+SLIDINGWINDOW:4:20 MINLEN:36
+
+# Quality Check after trimming
+fastqc SRR37624945_trimmed.fastq
+
+# Index reference genome
+bwa index GCF_000005845.2_ASM584v2_genomic.fna
+
+# Alignment
+bwa mem \
+GCF_000005845.2_ASM584v2_genomic.fna \
+SRR37624945_trimmed.fastq \
+> aligned.sam
+
+# Convert SAM to BAM
+samtools view -Sb aligned.sam > aligned.bam
+
+# Sort BAM
+samtools sort aligned.bam -o aligned_sorted.bam
+
+# Index BAM
+samtools index aligned_sorted.bam
+
+# Variant Calling
+bcftools mpileup \
+-f GCF_000005845.2_ASM584v2_genomic.fna \
+aligned_sorted.bam \
+| bcftools call -mv -Ov -o variants.vcf
+
+# Variant Filtering
+bcftools filter \
+-Ov \
+-o filtered.vcf \
+variants.vcf

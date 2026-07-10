@@ -1,0 +1,15 @@
+Reference Genome Information
+
+Organism:
+Escherichia coli K-12 MG1655
+
+Reference Assembly:
+GCF_000005845.2
+
+Assembly Name:
+ASM584v2
+
+Reference Source:
+NCBI RefSeq
+
+This reference genome was used for read alignment in this project.

@@ -1,0 +1,15 @@
+Variant Calling Summary
+
+Organism: Escherichia coli
+Sequencing Type: Whole Genome Sequencing (WGS)
+
+Pipeline:
+1. FastQC
+2. Trimmomatic
+3. BWA-MEM
+4. SAMtools
+5. BCFtools
+
+Final Output:
+- variants.vcf
+- filtered.vcf
